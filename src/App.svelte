@@ -6,13 +6,16 @@
     { id: 3, text: 'Ship it', done: false }
   ]);
 
+  let nextId = $state(4); 
+
   function addTodo(text) {
     if (!text) return;
     const newTodo = {
-      id: todos.length + 1,
+      id: nextId,
       text,
       done: false
     };
+    nextId++; 
     todos = [...todos, newTodo];
   }
 
@@ -27,11 +30,10 @@
   function editTodo(id, text) {
     todos = todos.map(todo => todo.id === id ? { ...todo, text: text } : todo);
     console.log(todos);
-
   }
 
   function clearCompleted() {
-        todos = todos.filter(todo => !todo.done);
+    todos = todos.filter(todo => !todo.done);
   }
 </script>
 
